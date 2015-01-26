@@ -89,7 +89,7 @@
     var currValue = getUrlParameter(currSearch, key);
 
     // If the current value is not set.
-    if (currValue === null) {
+    if (currValue === undefined) {
       // If there is no other parameters, start with a different delimiter.
       if (currSearch.length === 0) {
         delimiter = "?";
@@ -141,12 +141,22 @@
    * Get the current search, for use in all other functions from URL plugin.
    */
   function getCurrentSearch() {
-    var hash = History.getState().hash;
-    if (hash.indexOf("?") === -1) {
-      return '';
+    var href = window.location.href;
+
+    // First see if there is a question mark, for splitting.
+    var pos = href.indexOf('?');
+    if (pos >= 0) {
+      return href.slice(pos);
     }
-    var search = hash.split("?").pop();
-    return "?"+search;
+
+    // If not, there might be a hash sign instead.
+    pos = href.indexOf('#');
+    if (pos >= 0) {
+      return '?' + href.slice(href.indexOf('#'));
+    }
+
+    // Nothing defined.
+    return '?';
   }
 
   /**
@@ -184,26 +194,28 @@
    *
    * Expose the functions that should be publicly accessible.
    */
-  $.fn.changeUrlParameter = function(currSearch, key, value) {
-    return changeUrlParameter(currSearch, key, value);
-  };
-  $.fn.getUrlParameter = function(params, key, forceMultiple) {
-    return getUrlParameter(params, key, forceMultiple);
-  };
-  $.fn.removeUrlParameter = function(params, key) {
-    return removeUrlParameter(params, key);
-  };
-  $.fn.getCurrentSearch = function() {
-    return getCurrentSearch();
-  };
-  $.fn.trimTrailingSlashes = function(string) {
-    return trimTrailingSlashes(string);
-  };
-  $.fn.trimLeadingSlashes = function(string) {
-    return trimLeadingSlashes(string);
-  };
-  $.fn.trimSlashes = function(string) {
-    return trimSlashes(string);
-  };
+  $.extend({
+    changeUrlParameter : function(currSearch, key, value) {
+      return changeUrlParameter(currSearch, key, value);
+    },
+    getUrlParameter : function(params, key, forceMultiple) {
+      return getUrlParameter(params, key, forceMultiple);
+    },
+    removeUrlParameter : function(params, key) {
+      return removeUrlParameter(params, key);
+    },
+    getCurrentSearch : function() {
+      return getCurrentSearch();
+    },
+    trimTrailingSlashes : function(string) {
+      return trimTrailingSlashes(string);
+    },
+    trimLeadingSlashes : function(string) {
+      return trimLeadingSlashes(string);
+    },
+    trimSlashes : function(string) {
+      return trimSlashes(string);
+    }
+  });
 
 })(jQuery);
