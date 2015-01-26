@@ -8,7 +8,7 @@
    *   The name of the parameter to get.
    */
   function getUrlRegex(key) {
-    return new RegExp('([?|&]*)(' + key + '=' + ')([^&;]+?)?(&|#|;|$)', 'g');
+    return new RegExp('([?|&]*)(' + key + ')(=|&|#|$)' + '([^&;]+?)?(&|#|;|$)', 'g');
   }
 
   /**
@@ -36,8 +36,8 @@
     // Go through all the matches.
     var len = 0, result = false;
     while (result = regexp.exec(params)) {
-      // Remove unwanted stuff from name.
-      var keyFound = (result||[,,""])[2].replace(/^[?&]*/g, "").replace(/=*/g, "");
+      // Get the key found.
+      var keyFound = (result||[,,""])[2];
 
       // Make sure we update the length, but only if we actually add to it.
       if (results[keyFound] === undefined) {
@@ -45,7 +45,13 @@
       }
 
       // Add to results.
-      results[key] = decodeURIComponent((result||[,,,""])[3]);
+      var value = "";
+      // If value has been defined in URL.
+      if ((result||[,,,""])[3] === '=') {
+        value = decodeURIComponent((result||[,,,""])[4]);
+      }
+
+      results[key] = value;
     }
 
     // If multiple is forced, just return results.
@@ -102,7 +108,12 @@
       }
 
       // Add the value.
-      currSearch += key + "=" + value;
+      if (value.length > 0) {
+        currSearch += key + "=" + value;
+      }
+      else {
+        currSearch += key;
+      }
     }
     // Otherwise, we have to replace the value.
     else {
@@ -122,7 +133,16 @@
    *   The value to replace with.
    */
   function replaceUrlParameter(params, key, value) {
-    return params.replace(getUrlRegex(key), "$1$2"+encodeURIComponent(value)+"$4");
+    // If there is a value, set it.
+    if (value.length > 0) {
+      value = '='+encodeURIComponent(value);
+    }
+    // If not, do not show =.
+    else {
+      value = '';
+    }
+
+    return params.replace(getUrlRegex(key), "$1$2"+value+"$5");
   }
 
   /**
@@ -134,7 +154,7 @@
    *   The name of the parameter to remove.
    */
   function removeUrlParameter(params, key) {
-    return params.replace(getUrlRegex(key), "$1$4");
+    return params.replace(getUrlRegex(key), "$1").replace(/&$/, '');
   }
 
   /**
