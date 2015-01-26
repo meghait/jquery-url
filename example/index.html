@@ -11,6 +11,7 @@
     <span>Current search: <span class="current-search"></span></span><br />
     <span>Value of parameter 'test': <span class="test-value"></span></span><br />
     <span>Value of parameter 'test2': <span class="test2-value"></span></span><br />
+    <span>Value of parameter 'test3': <span class="test3-value"></span></span><br />
     <br />
     <span>Links without hash:</span><br />
     <ol>
@@ -18,7 +19,7 @@
       <li><a href="?test=1&test2=2">URL with two query parameters.</a></li>
       <li><a href="?test">URL with single parameter but no value.</a></li>
       <li><a href="?test&test2">URL with two parameters but no values.</a></li>
-      <li><a href="?test=test&test2">URL with two parameters one with and one without value.</a></li>
+      <li><a href="?test=1&test2">URL with two parameters one with and one without value.</a></li>
     </ol>
 
     <span>Same links with hashes:</span>
@@ -29,7 +30,7 @@
       <li><a href="?test=1&test2=2#hash">URL with two query parameters.</a></li>
       <li><a href="?test#hash">URL with single parameter but no value.</a></li>
       <li><a href="?test&test2#hash">URL with two parameters but no values.</a></li>
-      <li><a href="?test=test&test2#hash">URL with two parameters one with and one without value.</a></li>
+      <li><a href="?test=1&test2#hash">URL with two parameters one with and one without value.</a></li>
     </ol>
 
     <span>Links generated from url:</span>
@@ -37,6 +38,19 @@
       <li><a class="change-test">test changed to 11</a></li>
       <li><a class="change-test2">test2 changed to 22</a></li>
       <li><a class="change-test3">test3 changed to 33</a></li>
+      <li><a class="change-test-no-value">test changed to no value</a></li>
+      <li><a class="change-test2-no-value">test2 changed to no value</a></li>
+      <li><a class="change-test3-no-value">test3 changed to no value</a></li>
+      <li><a class="remove-test">test removed</a></li>
+      <li><a class="remove-test2">test2 removed</a></li>
+      <li><a class="remove-test3">test3 removed</a></li>
+    </ol>
+
+    <span>Trimming slashes:</span>
+    <ol>
+      <li><span>Trimming leading in '///test///': </span><span class="trim-leading"></span></li>
+      <li><span>Trimming trailing in '///test///': </span><span class="trim-trailing"></span></li>
+      <li><span>Trimming all in '///test///': </span><span class="trim-all"></span></li>
     </ol>
   </div>
 
