@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-language" content="da">
+  <title>URL jQuery plugin</title>
+</head>
+<body>
+  <div data-role="page">
+    <span>Current search: <span class="current-search"></span></span><br />
+    <span>Value of parameter 'test': <span class="test-value"></span></span><br />
+    <span>Value of parameter 'test2': <span class="test2-value"></span></span><br />
+    <br />
+    <span>Links without hash:</span><br />
+    <ol>
+      <li><a href="?test=1">URL with single query parameter.</a></li>
+      <li><a href="?test=1&test2=2">URL with two query parameters.</a></li>
+      <li><a href="?test">URL with single parameter but no value.</a></li>
+      <li><a href="?test&test2">URL with two parameters but no values.</a></li>
+      <li><a href="?test=test&test2">URL with two parameters one with and one without value.</a></li>
+    </ol>
+
+    <span>Same links with hashes:</span>
+    <ol>
+      <li><a href="index.html#hash">URL only with hash.</a></li>
+      <li><a href="?#hash">URL with no parameters, and with hash.</a></li>
+      <li><a href="?test=1#hash">URL with single query parameter.</a></li>
+      <li><a href="?test=1&test2=2#hash">URL with two query parameters.</a></li>
+      <li><a href="?test#hash">URL with single parameter but no value.</a></li>
+      <li><a href="?test&test2#hash">URL with two parameters but no values.</a></li>
+      <li><a href="?test=test&test2#hash">URL with two parameters one with and one without value.</a></li>
+    </ol>
+
+    <span>Links generated from url:</span>
+    <ol>
+      <li><a class="change-test">test changed to 11</a></li>
+      <li><a class="change-test2">test2 changed to 22</a></li>
+      <li><a class="change-test3">test3 changed to 33</a></li>
+    </ol>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="../jquery.url.js"></script>
+  <script type="text/javascript" src="jquery.url.example.js"></script>
+</body>
