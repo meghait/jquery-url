@@ -1,6 +1,8 @@
 (function($) {
   "use strict";
 
+  var version = "1.0.0";
+
   /**
    * Private function for getting the regular expression for matching stuff in the URL.
    *
@@ -237,7 +239,7 @@
       return trimSlashes(string);
     },
     getUrlVersion : function() {
-      return '1.0.0';
+      return version;
     }
   });
 
