@@ -1,0 +1,36 @@
+{
+   "name": "url",
+    "title": "jQuery URL",
+    "description": "jQuery plugin for manipulating the url parameters.",
+    "keywords": [
+        "url",
+        "query",
+        "get"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Michael Søby Andersen, Megha-IT",
+        "email": "m@mgit.dk",
+        "url": "https://github.com/meghait"
+    },
+    "maintainers": [
+        {
+            "name": "Michael Søby Andersen, Megha-IT",
+            "email": "m@mgit.dk",
+            "url": "https://github.com/meghait"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/meghait/jquery-url/blob/1.0.0/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/meghait/jquery-url/issues",
+    "homepage": "https://github.com/meghait/jquery-url",
+    "docs": "https://github.com/meghait/jquery-url/wiki",
+    "download": "https://github.com/meghait/jquery-url",
+    "dependencies": {
+        "jquery": ">=1.4.4"
+    }
+}
