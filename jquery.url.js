@@ -235,6 +235,9 @@
     },
     trimSlashes : function(string) {
       return trimSlashes(string);
+    },
+    getUrlVersion : function() {
+      return '1.0.0';
     }
   });
 
